@@ -1,0 +1,18 @@
+#version of the docker compose file being used
+version: "3"
+services:
+  #defines service named backend and builds the image in backend
+  backend:
+    build: ./backend
+    #maps container port to host port
+    ports:
+      - 8000:8000
+  #defines service named front end and builds the image in frontend
+  frontend:
+    build: ./frontend
+    #maps container port to host port
+    ports:
+      - 3000:3000
+    #specifies that front end relies on backend
+    depends_on:
+      - backend
